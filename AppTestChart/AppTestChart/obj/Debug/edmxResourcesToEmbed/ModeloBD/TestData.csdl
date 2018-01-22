@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Mascota">
+    <Key>
+      <PropertyRef Name="idMascota" />
+      <PropertyRef Name="Mascota1" />
+      <PropertyRef Name="Cantidad" />
+    </Key>
+    <Property Name="idMascota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mascota1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TestDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Mascotas" EntityType="Self.Mascota" />
+  </EntityContainer>
+</Schema>

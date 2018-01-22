@@ -1,0 +1,13 @@
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\bin\Debug\AppTestChart.exe.config
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\obj\Debug\AppTestChart.csprojResolveAssemblyReference.cache
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\obj\Debug\AppTestChart.Form1.resources
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\obj\Debug\AppTestChart.Properties.Resources.resources
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\obj\Debug\AppTestChart.csproj.GenerateResource.Cache
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\bin\Debug\AppTestChart.exe
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\bin\Debug\AppTestChart.pdb
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\obj\Debug\AppTestChart.exe
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\obj\Debug\AppTestChart.pdb
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\bin\Debug\EntityFramework.dll
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\bin\Debug\EntityFramework.xml
+c:\users\e41096\documents\visual studio 2013\Projects\AppTestChart\AppTestChart\bin\Debug\EntityFramework.SqlServer.xml

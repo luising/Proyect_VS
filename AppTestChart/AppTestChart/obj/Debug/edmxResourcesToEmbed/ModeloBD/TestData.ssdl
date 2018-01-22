@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TestData.dbo.Mascotas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Mascotas">
+    <Key>
+      <PropertyRef Name="idMascota" />
+      <PropertyRef Name="Mascota" />
+      <PropertyRef Name="Cantidad" />
+    </Key>
+    <Property Name="idMascota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mascota" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TestDataModelStoreContainer">
+    <EntitySet Name="Mascotas" EntityType="Self.Mascotas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Mascotas].[idMascota] AS [idMascota], 
+    [Mascotas].[Mascota] AS [Mascota], 
+    [Mascotas].[Cantidad] AS [Cantidad]
+    FROM [dbo].[Mascotas] AS [Mascotas]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
