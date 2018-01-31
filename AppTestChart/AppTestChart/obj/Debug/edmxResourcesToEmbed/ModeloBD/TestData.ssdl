@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TestDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TestData.dbo.Configuracion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="TimeWait" />
+    </Key>
+    <Property Name="TimeWait" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'TestData.dbo.Mascotas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="Mascotas">
     <Key>
@@ -12,13 +20,47 @@ advertencia 6002: La tabla o vista 'TestData.dbo.Mascotas' no tiene definida nin
     <Property Name="Mascota" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Cantidad" Type="int" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TestData.dbo.Pdfs' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Pdfs">
+    <Key>
+      <PropertyRef Name="idPdf" />
+    </Key>
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="srcPdf" Type="varchar" MaxLength="50" />
+    <Property Name="idPdf" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Function Name="sp_GetConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getMascotas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getPdf" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="namePdf" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_setPdf" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="namePdf" Type="varchar" Mode="In" />
+    <Parameter Name="srcP" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_setTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tiempoEspera" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="TestDataModelStoreContainer">
+    <EntitySet Name="Configuracion" EntityType="Self.Configuracion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Configuracion].[TimeWait] AS [TimeWait]
+    FROM [dbo].[Configuracion] AS [Configuracion]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Mascotas" EntityType="Self.Mascotas" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Mascotas].[idMascota] AS [idMascota], 
     [Mascotas].[Mascota] AS [Mascota], 
     [Mascotas].[Cantidad] AS [Cantidad]
     FROM [dbo].[Mascotas] AS [Mascotas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Pdfs" EntityType="Self.Pdfs" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Pdfs].[Nombre] AS [Nombre], 
+    [Pdfs].[srcPdf] AS [srcPdf], 
+    [Pdfs].[idPdf] AS [idPdf]
+    FROM [dbo].[Pdfs] AS [Pdfs]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

@@ -1,16 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TestDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Mascota">
+  <EntityContainer Name="TestDataEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="pb_getMascotas" ReturnType="Collection(TestDataModel.pb_getMascotas_Result)" />
+    <FunctionImport Name="sp_getMascotas" ReturnType="Collection(TestDataModel.sp_getMascotas_Result)" />
+    <FunctionImport Name="sp_GetConfig" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="sp_setTime" ReturnType="Collection(Int32)">
+      <Parameter Name="tiempoEspera" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_setPdf">
+      <Parameter Name="namePdf" Mode="In" Type="String" />
+      <Parameter Name="srcP" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Configuracion" EntityType="TestDataModel.Configuracion" />
+    <EntitySet Name="Mascotas" EntityType="TestDataModel.Mascotas" />
+    <EntitySet Name="Pdfs" EntityType="TestDataModel.Pdfs" />
+    <FunctionImport Name="sp_getPdf" ReturnType="Collection(String)">
+      <Parameter Name="namePdf" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="pb_getMascotas_Result">
+    <Property Type="String" Name="Mascota" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_getMascotas_Result">
+    <Property Type="String" Name="Mascota" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="TimeWait" />
+    </Key>
+    <Property Name="TimeWait" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mascotas">
     <Key>
       <PropertyRef Name="idMascota" />
-      <PropertyRef Name="Mascota1" />
+      <PropertyRef Name="Mascota" />
       <PropertyRef Name="Cantidad" />
     </Key>
     <Property Name="idMascota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Mascota1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mascota" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Cantidad" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityContainer Name="TestDataEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Mascotas" EntityType="Self.Mascota" />
-  </EntityContainer>
+  <EntityType Name="Pdfs">
+    <Key>
+      <PropertyRef Name="idPdf" />
+    </Key>
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="srcPdf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idPdf" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
 </Schema>

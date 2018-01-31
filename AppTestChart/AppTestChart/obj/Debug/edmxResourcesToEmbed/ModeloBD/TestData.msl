@@ -1,14 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TestDataModelStoreContainer" CdmEntityContainer="TestDataEntities">
-    <EntitySetMapping Name="Mascotas">
-      <EntityTypeMapping TypeName="TestDataModel.Mascota">
-        <MappingFragment StoreEntitySet="Mascotas">
-          <ScalarProperty Name="idMascota" ColumnName="idMascota" />
-          <ScalarProperty Name="Mascota1" ColumnName="Mascota" />
+    <FunctionImportMapping FunctionImportName="sp_getMascotas" FunctionName="TestDataModel.Store.sp_getMascotas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TestDataModel.sp_getMascotas_Result">
+          <ScalarProperty Name="Mascota" ColumnName="Mascota" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetConfig" FunctionName="TestDataModel.Store.sp_GetConfig" />
+    <FunctionImportMapping FunctionImportName="sp_setTime" FunctionName="TestDataModel.Store.sp_setTime" />
+    <FunctionImportMapping FunctionImportName="sp_setPdf" FunctionName="TestDataModel.Store.sp_setPdf" />
+    <EntitySetMapping Name="Configuracion">
+      <EntityTypeMapping TypeName="TestDataModel.Configuracion">
+        <MappingFragment StoreEntitySet="Configuracion">
+          <ScalarProperty Name="TimeWait" ColumnName="TimeWait" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Mascotas">
+      <EntityTypeMapping TypeName="TestDataModel.Mascotas">
+        <MappingFragment StoreEntitySet="Mascotas">
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Mascota" ColumnName="Mascota" />
+          <ScalarProperty Name="idMascota" ColumnName="idMascota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pdfs">
+      <EntityTypeMapping TypeName="TestDataModel.Pdfs">
+        <MappingFragment StoreEntitySet="Pdfs">
+          <ScalarProperty Name="idPdf" ColumnName="idPdf" />
+          <ScalarProperty Name="srcPdf" ColumnName="srcPdf" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getPdf" FunctionName="TestDataModel.Store.sp_getPdf" />
   </EntityContainerMapping>
 </Mapping>
